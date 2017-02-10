@@ -12,8 +12,8 @@
       <div class="fl-w-10">SS Finish</div>
     </li>
   <% @questions.each do |question| %>
-    <li class="cf">
-      <div class="fl h2 w-10 time-asked">
+    <li class="question-<%= question.id %> cf">
+      <div class="fl h2 pv1 w-10 time-asked">
         <%= link_to question.time_asked.strftime('%h %d, %H:%M'), question.question_link %>
       </div>
       <div class="fl h2 w-10 question-type f6">
@@ -21,30 +21,32 @@
           <% select("question", "question_type", question.type_options.collect {|o| [ o, o ] }, {selected: question.question_type, include_blank: true})%>
         <% end %>
       </div>
-      <div class="fl h2 w-10 github-username">
+      <div class="fl h2 pv1 w-10 github-username">
         <%= question.github_username || '..' %>
       </div>
-      <div class="fl h2 w-10 asker-name">
+      <div class="fl h2 pv1 w-10 asker-name">
         <%= question.asker_name || '..' %>
       </div>
-      <div class="fl h2 w-20 asker-email">
+      <div class="fl h2 pv1 w-20 asker-email">
         <%= question.email || '..' %>
       </div>
-      <div class="fl h2 w-10 learn-expert">
+      <div class="fl h2 pv1 w-10 learn-expert">
         <%= question.learn_expert || '..' %>
       </div>
-      <div class="fl h2 w-10 screen-share-start">
+      <div class="fl h2 w-10 start-screenshare-column">
         <% if question.start_share %>
-          <%= question.start_share.strftime('%h %d, %H:%M') %>
+          <%= render partial: 'questions/start_screenshare_form', locals: {question: question, has_started: true} %>
+        <% else %>
+          <%= render partial: 'questions/start_screenshare_form', locals: {question: question, has_started: false} %>
         <% end %>
       </div>
-      <div class="fl h2 w-10 screen-share-start">
+      <div class="fl h2 w-10 end-screenshare-column">
         <% if question.end_share %>
           <%= question.end_share.strftime('%h %d, %H:%M') %>
         <% end %>
       </div>
       <div class="fl h2 w-10 actions">
-        <%= link_to 'Edit', edit_question_path(question), remote: true %>
+        <%= link_to 'Edit', edit_question_path(question), remote: true, method: :post %>
       </div>
     </li>
   <% end %>
