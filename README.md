@@ -16,7 +16,6 @@ Then you can visit `http://localhost:3000` and see how it looks so far.
 ## To Do
 
 * Add Option to remove screen share times if clicked in error.
-* Build auto-updating function into screenshare times (so changing the time automatically sends a put request to the DB)
 * Add Polling to Learn API to import new questions every 60 seconds
 * Add Button that triggers importing new questions
 * Figure out how to parse the date strings from the API to make sure they're in the right time zone when they're imported
