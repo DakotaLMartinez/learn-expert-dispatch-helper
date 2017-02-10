@@ -1,0 +1,50 @@
+<div class="ph4">
+  <h1>Questions</h1>
+  <ul class="list pl0 cf">
+    <li class="headers h2 b cf">
+      <div class="fl w-10">Time Asked</div>
+      <div class="fl w-10">Type</div>
+      <div class="fl w-10">GH Username</div>
+      <div class="fl w-10">Asker Name</div>
+      <div class="fl w-20">Asker Email</div>
+      <div class="fl w-10">Learn Expert</div>
+      <div class="fl w-10">SS Start</div>
+      <div class="fl-w-10">SS Finish</div>
+    </li>
+  <% @questions.each do |question| %>
+    <li class="cf">
+      <div class="fl h2 w-10 time-asked">
+        <%= link_to question.time_asked.strftime('%h %d, %H:%M'), question.question_link %>
+      </div>
+      <div class="fl h2 w-10 question-type">
+        <%= question.question_type || '..' %>
+      </div>
+      <div class="fl h2 w-10 github-username">
+        <%= question.github_username || '..' %>
+      </div>
+      <div class="fl h2 w-10 asker-name">
+        <%= question.asker_name || '..' %>
+      </div>
+      <div class="fl h2 w-20 asker-email">
+        <%= question.email || '..' %>
+      </div>
+      <div class="fl h2 w-10 learn-expert">
+        <%= question.learn_expert || '..' %>
+      </div>
+      <div class="fl h2 w-10 screen-share-start">
+        <% if question.start_share %>
+          <%= question.start_share.strftime('%h %d, %H:%M') %>
+        <% end %>
+      </div>
+      <div class="fl h2 w-10 screen-share-start">
+        <% if question.end_share %>
+          <%= question.end_share.strftime('%h %d, %H:%M') %>
+        <% end %>
+      </div>
+      <div class="fl h2 w-10 actions">
+        <%= link_to 'Edit', edit_question_path(question), remote: true %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+</div>
