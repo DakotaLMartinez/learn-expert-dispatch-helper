@@ -1,0 +1,3 @@
+$('.question-<%= @question.id %> .finish-screenshare-form')
+  .hide()
+  .after("<%= escape_javascript (render partial: 'questions/finish_screenshare_form', locals: { question: @question, has_finished: true } ) %>")

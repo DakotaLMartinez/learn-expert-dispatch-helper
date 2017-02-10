@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :start_screenshare, :finish_screenshare :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :start_screenshare, :finish_screenshare, :destroy]
   def index 
     @questions = Question.all
   end

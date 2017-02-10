@@ -1,0 +1,11 @@
+<% if has_finished %>
+  <%= form_tag finish_screenshare_path(question), method: 'put', remote: true, class: 'edit-finish-screenshare-form' do %>
+    <%= time_field_tag :end_share, question.end_share.strftime('%H:%M') %>
+    <%= submit_tag 'finish', class: 'dn' %>
+  <% end %>
+<% else %>
+  <%= form_tag finish_screenshare_path(question), method: 'put', remote: true, class: 'finish-screenshare-form' do %>
+    <%= time_field_tag :end_share, '', class: 'dn' %>
+    <%= submit_tag 'finish' %>
+  <% end %>
+<% end %>

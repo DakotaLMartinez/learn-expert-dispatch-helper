@@ -33,20 +33,22 @@
       <div class="fl h2 pv1 w-10 learn-expert">
         <%= question.learn_expert || '..' %>
       </div>
-      <div class="fl h2 w-10 start-screenshare-column">
+      <div class="fl h2 w-10 screen-share-start">
         <% if question.start_share %>
-          <%= render partial: 'questions/start_screenshare_form', locals: {question: question, has_started: true} %>
+          <%= render partial: 'questions/start_screenshare_form', locals: { question: question, has_started: true } %>
         <% else %>
-          <%= render partial: 'questions/start_screenshare_form', locals: {question: question, has_started: false} %>
+          <%= render partial: 'questions/start_screenshare_form', locals: { question: question, has_started: false } %>
         <% end %>
       </div>
-      <div class="fl h2 w-10 end-screenshare-column">
+      <div class="fl h2 w-10 screen-share-finish">
         <% if question.end_share %>
-          <%= question.end_share.strftime('%h %d, %H:%M') %>
+          <%= render partial: 'questions/finish_screenshare_form', locals: { question: question, has_finished: true } %>
+        <% else %>
+          <%= render partial: 'questions/finish_screenshare_form', locals: { question: question, has_finished: false } %>
         <% end %>
       </div>
       <div class="fl h2 w-10 actions">
-        <%= link_to 'Edit', edit_question_path(question), remote: true, method: :post %>
+        <%= link_to 'Edit', edit_question_path(question), remote: true %>
       </div>
     </li>
   <% end %>
