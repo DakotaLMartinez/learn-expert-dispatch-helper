@@ -10,4 +10,10 @@ class Question < ApplicationRecord
       'Duplicate'
     ]
   end
+
+  def start_screenshare
+    self.question_type = 'SS'
+    self.start_share = Time.zone.now()
+    self.save
+  end
 end

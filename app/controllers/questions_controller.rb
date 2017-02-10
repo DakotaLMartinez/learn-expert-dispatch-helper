@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :start_screenshare, :destroy]
   def index 
     @questions = Question.all
   end
@@ -11,10 +11,18 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def start_screenshare 
+    @question.start_screenshare
+    respond_to do |format|
+      format.js {}
+      format.json { render json: @question }
+    end
+  end
+
   private 
 
   def set_question 
-    @question = Question.find_by(params[:id])
+    @question = Question.find_by(id: params[:id])
   end
 
   def question_params
