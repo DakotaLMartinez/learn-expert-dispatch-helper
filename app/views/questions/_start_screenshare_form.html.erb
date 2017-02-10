@@ -1,6 +1,6 @@
 <% if has_started %>
-  <%= form_tag start_screenshare_path(question), method: 'put', remote: true, class: 'edit-start-screenshare-form' do %>
-    <%= time_field_tag :start_share, question.start_share.strftime('%H:%M') %>
+  <%= form_tag question_path(question), method: 'put', remote: true, class: 'edit-start-screenshare-form' do %>
+    <%= time_field_tag 'question[new_start_share]', question.start_share.strftime('%H:%M') %>
     <%= submit_tag 'start', class: 'dn' %>
   <% end %>
 <% else %>

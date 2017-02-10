@@ -21,4 +21,22 @@ class Question < ApplicationRecord
     self.end_share = Time.zone.now()
     self.save
   end
+
+  def new_start_share=(new_time)
+    old_time = self.start_share
+    hours = Integer(new_time.split(':')[0])
+    minutes = Integer(new_time.split(':')[1])
+    new_time = DateTime.new(old_time.year, old_time.month, old_time.day, hours, minutes, 0, Rational(-5,24))
+    self.start_share = new_time 
+    self.save
+  end
+
+  def new_end_share=(new_time)
+    old_time = self.end_share
+    hours = Integer(new_time.split(':')[0])
+    minutes = Integer(new_time.split(':')[1])
+    new_time = DateTime.new(old_time.year, old_time.month, old_time.day, hours, minutes, 0, Rational(-5,24))
+    self.end_share = new_time 
+    self.save
+  end
 end
