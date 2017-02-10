@@ -1,3 +1,4 @@
 $('.question-<%= @question.id %> .start-screenshare-form')
   .hide()
   .after("<%= escape_javascript render partial: 'questions/start_screenshare_form', locals: { question: @question, has_started: true } %>")
+$('.question-<%= @question.id %> select').val('<%= @question.question_type %>')
