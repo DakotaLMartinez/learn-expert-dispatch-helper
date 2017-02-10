@@ -2,7 +2,8 @@ class CreateQuestions < ActiveRecord::Migration[5.0]
   def change
     create_table :questions do |t|
       t.datetime :time_asked
-      t.string :type
+      t.string :question_type
+      t.string :asker_name
       t.string :github_username
       t.string :email
       t.string :question_link

@@ -14,7 +14,8 @@ ActiveRecord::Schema.define(version: 20170209055731) do
 
   create_table "questions", force: :cascade do |t|
     t.datetime "time_asked"
-    t.string   "type"
+    t.string   "question_type"
+    t.string   "asker_name"
     t.string   "github_username"
     t.string   "email"
     t.string   "question_link"
