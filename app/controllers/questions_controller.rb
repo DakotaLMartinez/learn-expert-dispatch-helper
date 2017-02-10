@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :start_screenshare, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :start_screenshare, :finish_screenshare :destroy]
   def index 
     @questions = Question.all
   end
@@ -13,6 +13,14 @@ class QuestionsController < ApplicationController
 
   def start_screenshare 
     @question.start_screenshare
+    respond_to do |format|
+      format.js {}
+      format.json { render json: @question }
+    end
+  end
+
+  def finish_screenshare 
+    @question.finish_screenshare
     respond_to do |format|
       format.js {}
       format.json { render json: @question }

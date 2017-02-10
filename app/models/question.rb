@@ -16,4 +16,9 @@ class Question < ApplicationRecord
     self.start_share = Time.zone.now()
     self.save
   end
+
+  def finish_screenshare 
+    self.end_share = Time.zone.now()
+    self.save
+  end
 end
