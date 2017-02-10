@@ -16,8 +16,10 @@
       <div class="fl h2 w-10 time-asked">
         <%= link_to question.time_asked.strftime('%h %d, %H:%M'), question.question_link %>
       </div>
-      <div class="fl h2 w-10 question-type">
-        <%= question.question_type || '..' %>
+      <div class="fl h2 w-10 question-type f6">
+        <%= form_tag question_path(question), method: 'put', remote: true, class: 'edit_question_type' do %>
+          <% select("question", "question_type", question.type_options.collect {|o| [ o, o ] }, {selected: question.question_type, include_blank: true})%>
+        <% end %>
       </div>
       <div class="fl h2 w-10 github-username">
         <%= question.github_username || '..' %>
