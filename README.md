@@ -1,24 +1,28 @@
-# README
+# Learn Expert Dispatch Helper
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Right now, I've just got some seeds of a few questions to see how the UI works.
 
-Things you may want to cover:
+To setup, just clone and run:
 
-* Ruby version
+```
+bundle install
+rails db:migrate 
+rails db:seed 
+rails s
+```
 
-* System dependencies
+Then you can visit `http://localhost:3000` and see how it looks so far.
 
-* Configuration
+## To Do
 
-* Database creation
+* Add Option to remove screen share times if clicked in error.
+* Build auto-updating function into screenshare times (so changing the time automatically sends a put request to the DB)
+* Add Polling to Learn API to import new questions every 60 seconds
+* Add Button that triggers importing new questions
+* Figure out how to parse the date strings from the API to make sure they're in the right time zone when they're imported
+* Possibly enable CORS so we can get data from both Learn API and GitHub API (to fill in Github username)
 
-* Database initialization
+## Other Details
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby version - 2.3.1, Rails 5.0.0.1
+* No tests yet
