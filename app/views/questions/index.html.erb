@@ -30,17 +30,20 @@
       <div class="fl h2 pv1 w-20 asker-email">
         <%= question.email || '..' %>
       </div>
-      <div class="fl h2 pv1 w-10 learn-expert">
-        <%= question.learn_expert || '..' %>
+      <div class="fl h2 w-10 learn-expert f6">
+        <%= form_tag question_path(question), method: 'put', remote: true, class: 'edit-learn-expert-form pr2' do %>
+          <%= text_field_tag 'question[learn_expert]', question.learn_expert, class: 'w-100 h2' %>
+        <% end %>
+        
       </div>
-      <div class="fl h2 w-10 screen-share-start">
+      <div class="fl h2 w-10 screen-share-start f6">
         <% if question.start_share %>
           <%= render partial: 'questions/start_screenshare_form', locals: { question: question, has_started: true } %>
         <% else %>
           <%= render partial: 'questions/start_screenshare_form', locals: { question: question, has_started: false } %>
         <% end %>
       </div>
-      <div class="fl h2 w-10 screen-share-finish">
+      <div class="fl h2 w-10 screen-share-finish f6">
         <% if question.end_share %>
           <%= render partial: 'questions/finish_screenshare_form', locals: { question: question, has_finished: true } %>
         <% else %>

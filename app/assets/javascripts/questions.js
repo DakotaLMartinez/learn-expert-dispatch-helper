@@ -13,3 +13,11 @@ $(document).on('blur', 'input[type="time"]', function(){
     data: $(this).parent().serialize()
   })
 })
+
+$(document).on('blur', '.edit-learn-expert-form input', function(){
+  $.ajax({
+    method: 'put', 
+    url: this.form.action, 
+    data: $(this).parent().serialize()
+  })
+})
